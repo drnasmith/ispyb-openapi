@@ -1,0 +1,285 @@
+openapi: '3.0.1'
+info:
+  title: SynchWeb OpenAPI Specification
+  version: v0.0.0
+servers: 
+  - url: https://cs04r-sc-vserv-163.diamond.ac.uk/api
+
+paths:
+  /authenticate:
+    post:
+      operationId: authenticate
+      tags:
+        - authenticate
+      requestBody:
+        content:
+          'application/x-www-form-urlencoded':
+            schema:
+              type: object
+              properties:
+                login:
+                  type: string
+                password:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /proposal:
+    get:
+      summary: Get proposal
+      tags:
+        - proposal
+      description: Get Proposal list valid for user
+      operationId: getProposals
+      responses:
+        default:
+          description: Return list of proposals for the logged in user
+      parameters: 
+      - name: prop
+        schema:
+          type: string
+        required: false
+        in: query
+      - name: page
+        schema:
+          type: string
+        required: false
+        in: query
+      - name: per_page
+        schema:
+          type: string
+        required: false
+        in: query
+  /proposal/visits:
+    get:
+      summary: Get Visits/Sessions
+      tags:
+        - proposal
+      description: >
+        Lookup Visits from proposal(s)
+      operationId: getVisits
+      responses:
+        default:
+          description: Return list of visits for this proposal
+      parameters: 
+      - name: visit
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Visit number to return
+      - name: prop
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Proposal code to retrieve visits from
+      - name: page
+        schema:
+          type: string
+        required: false
+        in: query
+      - name: per_page
+        schema:
+          type: string
+        required: false
+        in: query
+      - name: current
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Flag that if set returns current visits (next, prev and all cm), ignores other parameters
+      - name: all
+        schema:
+          type: string
+        required: false
+        in: query
+        description: >
+          Flag that if set looks for visits across all proposals. If not set, looks for visits from the specific proposal 'prop'
+      - name: year
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Filter on visits within the specified year
+      - name: month
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Filter on visits within the specified month
+      - name: prev
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Filter on visits that have completed
+      - name: next
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Filter on visits that not started
+      - name: bl
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Filter on visits for a specific beamline
+      - name: cm
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Filter on  comissioning visits (cm code) only
+      - name: ty
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Only return visits within a certain beamline group (mx, em, xpdf etc.)
+      - name: s
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Search term (searches proposal code, beamline)
+      - name: scheduled
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Filter on visits which are scheduled (session scheduled flag is set)
+      - name: sort_by
+        schema:
+          type: string
+          enum: ['ST', 'EN', 'VIS', 'BL', 'LC', 'COMMENT']
+        required: false
+        in: query
+        description: >
+          Return results sorted by start date, end date, visit number, beamline, local contact, comments
+      - name: order
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Order results by ascending (if 'asc') or descending value
+    patch:
+      summary: Update Visits/Sessions
+      tags:
+        - proposal
+      description: >
+        Lookup Visits from proposal(s)
+      operationId: updateVisits
+      responses:
+        default:
+          description: Update Comments field for the visit
+      parameters: 
+      - name: visit
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Visit number to update
+      - name: prop
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Proposal code to retrieve visits from        
+      - name: COMMENTS
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Comments that should be saved for the visit        
+
+  /bls/ty:
+    get:
+      summary: Beamlines per type
+      tags:
+        - proposal
+      description: Returns list of beamlines within the specified group
+      operationId: getBeamlinesByType
+      responses:
+        default:
+          description: Beamline list
+      parameters:
+        - name: ty
+          schema:
+            type: string
+          in: query
+          description: Type of beamline (mx, xpdf, em etc.)
+  /type:
+    get:
+      summary: Proposal Codes for the current type
+      tags:
+        - proposal
+      description: >
+        Returns list of distinct proposal codes for currently selected beamline type. Type is determined from based on current prop or user admin privileges
+      operationId: getProposalCodesForBeamlineType
+      responses:
+        default:
+          description: Proposal codes (cm, mx, em, cy, in etc.)
+      parameters:
+      - name: prop
+        schema:
+          type: string
+        required: false
+        in: query
+        description: Proposal code to retrieve visits from        
+
+  /lookup:
+    post:
+      summary: Lookup visit by dewarid, containerid, sampleid etc.
+      tags:
+        - proposal
+      description: Returns visit that includes the specified object identifier
+      operationId: getVisitFromLookup
+      responses:
+        default:
+          description: Return proposal, session, data collection, sample info based on object query
+      parameters:
+      - name: BLSAMPLEID
+        schema:
+          type: string
+        required: false
+        in: query
+      - name: CRYSTALID
+        schema:
+          type: string
+        required: false
+        in: query
+      - name: PROTEINID
+        schema:
+          type: string
+        required: false
+        in: query
+      - name: CONTAINERID
+        schema:
+          type: string
+        required: false
+        in: query
+      - name: DEWARID
+        schema:
+          type: string
+        required: false
+        in: query
+      - name: SHIPPINGID
+        schema:
+          type: string
+        required: false
+        in: query
+      - name: LABCONTACTID
+        schema:
+          type: string
+        required: false
+        in: query
+      - name: DATACOLLECTIONID
+        schema:
+          type: string
+        required: false
+        in: query
