@@ -2,42 +2,24 @@ openapi: '3.0.1'
 info:
   title: SynchWeb OpenAPI Specification
   version: v0.0.0
+  description: 'Documentation for SynchWeb REST API'
 servers: 
-  - url: https://cs04r-sc-vserv-163.diamond.ac.uk/api
-
+  - url: https://localhost:8080/api
+security:
+  - BearerAuth: []
 paths:
-  /authenticate:
-    post:
-      operationId: authenticate
-      tags:
-        - authenticate
-      requestBody:
-        content:
-          'application/x-www-form-urlencoded':
-            schema:
-              type: object
-              properties:
-                login:
-                  type: string
-                password:
-                  type: string
-      responses:
-        default:
-          description: default response
-          content:
-            application/json: {}
   /proposal:
     get:
       summary: Get proposal
       tags:
         - proposal
-      description: Get Proposal list valid for user
+      description: Get Proposal list for user
       operationId: getProposals
       responses:
         default:
           description: Return list of proposals for the logged in user
       parameters: 
-      - name: prop
+      - name: proposal
         schema:
           type: string
         required: false
@@ -283,3 +265,9 @@ paths:
           type: string
         required: false
         in: query
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
