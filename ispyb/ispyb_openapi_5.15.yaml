@@ -1,0 +1,5567 @@
+openapi: 3.0.1
+info:
+  title: ISPyB Java Web Services
+  description: REST web services for ISPyB
+  version: '5.15'
+servers:
+  - url: http://localhost:8080/ispyb/ispyb-ws/rest
+paths:
+  '/{token}/proposal/{proposal}/em/datacollection/{dataCollectionId}/movie/{movieId}/ctf/thumbnail':
+    get:
+      operationId: getSpectraThumbnailByMovieId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: movieId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/em/datacollection/{dataCollectionId}/movie/{movieId}/motioncorrection/thumbnail':
+    get:
+      operationId: getMotionCorrectionThumbnailByMovieId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: movieId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/em/datacollection/{dataCollectionId}/movie/{movieId}/motioncorrection/drift':
+    get:
+      operationId: getMotionCorrectionDriftByMovieId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: movieId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/em/datacollection/{dataCollectionId}/movie/{movieId}/mrc':
+    get:
+      operationId: getMovieMRC
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: movieId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/em/datacollection/{dataCollectionId}/movie/{movieId}/thumbnail':
+    get:
+      operationId: getMovieMicrographThumbnail
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: movieId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/em/datacollection/{dataCollectionId}/movie/{movieId}/metadata/xml':
+    get:
+      operationId: getMovieMetadataXML
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: movieId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/em/datacollection/{dataCollectionId}/movie/all':
+    get:
+      operationId: getMoviesDataByDataCollectionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/em/datacollection/{dataCollectionId}/movie':
+    get:
+      operationId: getMoviesByDataCollectionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/em/datacollection/{dataCollectionId}/dose':
+    get:
+      operationId: getDoseByDataCollectionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/em/session/{sessionId}/stats':
+    get:
+      operationId: getStatsBySessionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/em/datacollection/session/{sessionIdList}/list':
+    get:
+      operationId: getViewDataCollectionBySessionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionIdList
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/em/datacollection/{dataCollectionIds}/stats':
+    get:
+      operationId: getStatsByDataCollectionIds
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/{autoProcIntegrationListId}/xscale/plot':
+    get:
+      operationId: getXScalePlotByAutoProcProgramId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcIntegrationListId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/datacollection/{dataCollectionIdList}/view':
+    get:
+      operationId: getByDatacollectionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionIdList
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/attachment/autoprocprogramid/{autoprocattachmentids}/download':
+    get:
+      operationId: downloadAttachments
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoprocattachmentids
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: forceFilename
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/{autoProcIntegrationListId}/xscale/completeness':
+    get:
+      operationId: getXScaleCompleteness
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcIntegrationListId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/{autoProcIntegrationListId}/xscale/cc2':
+    get:
+      operationId: getXScaleCC2
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcIntegrationListId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/{autoProcIntegrationListId}/xscale/isigma':
+    get:
+      operationId: getXScaleISigma
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcIntegrationListId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/{autoProcIntegrationListId}/xscale/rfactor':
+    get:
+      operationId: getXScaleRfactor
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcIntegrationListId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/{autoProcIntegrationListId}/xscale/sigmaano':
+    get:
+      operationId: getXScaleSigmaAno
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcIntegrationListId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/{autoProcIntegrationListId}/xscale/anomcorr':
+    get:
+      operationId: getXScaleAnomCorr
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcIntegrationListId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/{autoProcIntegrationListId}/xscale/wilson':
+    get:
+      operationId: getXScaleWilson
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcIntegrationListId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/autoprocattachmentid/{autoProcAttachmentId}/download':
+    get:
+      operationId: downloadAutoProcAttachment
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcAttachmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/autoprocattachmentid/{autoProcAttachmentId}/get':
+    get:
+      operationId: getAutoProcAttachment
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcAttachmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/autoprocattachmentid/{autoProcAttachmentId}/getPdf':
+    get:
+      operationId: getAutoProcAttachmentPdf
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcAttachmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/pdf: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/autoprocattachmentid/{autoProcAttachmentId}/getHtml':
+    get:
+      operationId: getAutoProcAttachmentHtml
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoProcAttachmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/html: {}
+  '/{token}/proposal/{proposal}/mx/autoprocintegration/attachment/autoprocprogramid/{autoprocattachmentids}/list':
+    get:
+      operationId: getAttachments
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoprocattachmentids
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/crystal/datacollection/{dataCollectionId}/pdb/download':
+    get:
+      operationId: downloadPdbByDataCollectionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/crystal/{crystalId}/get':
+    get:
+      operationId: getCrystalById
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: crystalId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/crystal/proteinid/{proteinid}/list':
+    get:
+      operationId: getCrystalByProteinId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proteinid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/crystal/geometryclass/{spacegroup}/list':
+    get:
+      operationId: getGeometryClassBySpaceGroup
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: spacegroup
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/crystal/proteinid/{proteinId}/save':
+    post:
+      operationId: saveCrystalForm
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proteinId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                crystalId:
+                  type: string
+                name:
+                  type: string
+                spaceGroup:
+                  type: string
+                cellA:
+                  type: number
+                  format: double
+                cellB:
+                  type: number
+                  format: double
+                cellC:
+                  type: number
+                  format: double
+                cellAlpha:
+                  type: number
+                  format: double
+                cellBeta:
+                  type: number
+                  format: double
+                cellGamma:
+                  type: number
+                  format: double
+                comments:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/crystal/list':
+    get:
+      operationId: getCrystalList
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/crystal/{crystalid}/structure/save':
+    post:
+      operationId: saveStructure
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: crystalid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FileUploadForm'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/crystal/{crystalid}/structure/{structureId}/delete':
+    get:
+      operationId: removeStructure
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: crystalid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: structureId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/datacollectiongroup/{dataCollectionGroupId}/comments/save':
+    post:
+      operationId: saveDataCollectionComments
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionGroupId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                comments:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/mx/datacollectiongroup/{dataCollectionGroupId}/xtal/thumbnail':
+    get:
+      operationId: getXtalThumbnailByDataCollectionGroupId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionGroupId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/{dataCollectionId}/wilson':
+    get:
+      operationId: getWilsonPlot
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/mx/xrfscan/xrfscanId/{xrfscanId}/qualityindicatorcsv':
+    get:
+      operationId: getCSVFile
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: xrfscanId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/filterParam/{filterParam}/report/pdf':
+    get:
+      operationId: getDataCollectionsReportByfilterParamPDF
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: filterParam
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/pdf: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/filterParam/{filterParam}/report/rtf':
+    get:
+      operationId: getDataCollectionsReportByfilterParamRTF
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: filterParam
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/rtf: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/session/{sessionId}/report/rtf':
+    get:
+      operationId: getDataCollectionsReportBySessionIdRTF
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: nbRows
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/rtf: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/session/{sessionId}/analysisreport/pdf':
+    get:
+      operationId: getDataCollectionsAnalysisReportBySessionIdPDF
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: nbRows
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/pdf: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/filterParam/{filterParam}/analysisreport/pdf':
+    get:
+      operationId: getDataCollectionsAnalysisReportByFilterParamPDF
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: filterParam
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/pdf: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/filterParam/{filterParam}/analysisreport/rtf':
+    get:
+      operationId: getDataCollectionsAnalysisReportByFilterParamRTF
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: filterParam
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/rtf: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/session/{sessionId}/analysisreport/rtf':
+    get:
+      operationId: getDataCollectionsAnalysisReportBySessionIdRTF
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: nbRows
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/rtf: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/workflowstep/{workflowstepId}/list':
+    get:
+      operationId: getViewDataCollectionByWorkflowStepId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workflowstepId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/{dataCollectionId}/crystalsnaphot/{id}/get':
+    get:
+      operationId: getCrystalSnapshot
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/session/{sessionId}/report/pdf':
+    get:
+      operationId: getDataCollectionsReportBySessionIdPDF
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: nbRows
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/pdf: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/workflow/{workflowIdList}/list':
+    get:
+      operationId: getDataCollectionsByWorkflowId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workflowIdList
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/{dataCollectionId}/qualityindicatorplot':
+    get:
+      operationId: getQualityIndicatorsPlot
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/{dataCollectionId}/comments/save':
+    post:
+      operationId: saveDataCollectionComments_1
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                comments:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/{dataCollectionIdList}/list':
+    get:
+      operationId: getDataCollectionById
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionIdList
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/session/{sessionIdList}/list':
+    get:
+      operationId: getViewDataCollectionBySessionId_1
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionIdList
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/protein_acronym/{protein_acronyms}/list':
+    get:
+      operationId: getViewDataCollectionByProteinAcronym
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: protein_acronyms
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/datacollection/datacollectiongroupid/{datacollectiongroupids}/list':
+    get:
+      operationId: getViewDataCollectionByDataCollectionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: datacollectiongroupids
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/energyscan/energyscanId/{energyscanId}/jpegchooch':
+    get:
+      operationId: getjpegchooch
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: energyscanId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/mx/energyscan/energyscanId/{energyscanId}/chooch':
+    get:
+      operationId: getChooch
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: energyscanId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/energyscan/session/{sessionId}/list':
+    get:
+      operationId: getEnergyScanBySessionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/energyscan/energyscanId/{energyscanId}/scanfile':
+    get:
+      operationId: getScanFileFullPath
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: energyscanId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/image/{imageId}/get':
+    get:
+      operationId: getImageById
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: imageId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/image/{imageId}/thumbnail':
+    get:
+      operationId: getThumbNailImageById
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: imageId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/stats/autoprocstatistics/{type}/{start}/{end}/json':
+    get:
+      operationId: getAutoprocessingStatisticsByDate
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: start
+          in: path
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: path
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: beamlinenames
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/stats/autoprocstatistics/{type}/{start}/{end}/csv':
+    get:
+      operationId: getCSVAutoprocessingStatisticsByDate
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: start
+          in: path
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: path
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: beamlinenames
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/csv: {}
+  '/{token}/proposal/{proposal}/mx/phasing/phasingstepid/{phasingStepIds}/download':
+    get:
+      operationId: downloadPhasingFilesByPhasingStepId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: phasingStepIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/phasing/phasingprogramattachmentid/{phasingProgramAttachmentId}/image':
+    get:
+      operationId: getPhasingFilesByPhasingProgramAttachmentIdAsImage
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: phasingProgramAttachmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/mx/phasing/phasingprogramattachmentid/{phasingProgramAttachmentId}/download':
+    get:
+      operationId: getPhasingFilesByPhasingProgramAttachmentId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: phasingProgramAttachmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/phasing/phasingprogramattachmentid/{phasingProgramAttachmentId}/csv':
+    get:
+      operationId: getCSVPhasingFileByPhasingProgramAttachmentId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: phasingProgramAttachmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/phasing/sampleid/{sampleIds}/list':
+    get:
+      operationId: getPhasingViewBySampleId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sampleIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/phasing/phasingstepid/{phasingStepIds}/list':
+    get:
+      operationId: getPhasingViewByPhasingStepId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: phasingStepIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/phasing/phasingstepid/{phasingStepIds}/files':
+    get:
+      operationId: getPhasingFilesByPhasingStepId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: phasingStepIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/phasing/datacollectiongroupid/{dataCollectionGroupIds}/list':
+    get:
+      operationId: getPhasingViewByDataCollectionGroupId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionGroupIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/phasing/datacollectionid/{dataCollectionIds}/list':
+    get:
+      operationId: getPhasingViewByDataCollectionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataCollectionIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/phasing/autoprocintegrationid/{autoprocIntegrationId}/list':
+    get:
+      operationId: getPhasingViewByAutoProcIntegrationId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: autoprocIntegrationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/phasing/proteinid/{proteinIds}/list':
+    get:
+      operationId: getPhasingViewByProteinId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proteinIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/phasing/sessionid/{sessionIds}/list':
+    get:
+      operationId: getPhasingViewBySessionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/protein/list':
+    get:
+      operationId: getProteinByProposalId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/protein/stats':
+    get:
+      operationId: getStatsByProposal
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/sample/crystalId/{crystalId}/list':
+    get:
+      operationId: getSamplesByCrystalId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: crystalId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/sampleinfo/crystalId/{crystalId}/list':
+    get:
+      operationId: getSampleInfoByCrystalId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: crystalId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/sampleinfo/list':
+    get:
+      operationId: getSampleInfoByProposalId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/sample/list':
+    get:
+      operationId: getSampleByProposalId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/sample/acronym/{acronym}/sortView/{sortView}/list/pdf':
+    get:
+      operationId: getSamplesListByAcronymPDF
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: acronym
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sortView
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/pdf: {}
+  '/{token}/proposal/{proposal}/mx/sample/dewar/{dewarIdList}/sortView/{sortView}/list/pdf':
+    get:
+      operationId: getSamplesListByDewarIdPDF
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dewarIdList
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sortView
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/pdf: {}
+  '/{token}/proposal/{proposal}/mx/sample/sessionid/{sessionid}/list':
+    get:
+      operationId: getSamplesBySessionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/sample/containerid/{containerid}/list':
+    get:
+      operationId: getSamplesByContainerId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: containerid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/sample/shipmentid/{shipmentid}/list':
+    get:
+      operationId: getSamplesByShipmentId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shipmentid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/sample/dewarid/{dewarid}/list':
+    get:
+      operationId: getSamplesByDewarId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dewarid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/structures/{datacollectionid}/list':
+    get:
+      operationId: getStructuresJSON
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: datacollectionid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/structures/{datacollectionid}/csv':
+    get:
+      operationId: getStructuresCSV
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: datacollectionid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/workflow/step/{workflowStepId}/html':
+    get:
+      operationId: getWorkflowStepHTMLById
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workflowStepId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/html:
+              schema:
+                type: string
+  '/{token}/proposal/{proposal}/mx/workflow/step/{workflowStepId}/result':
+    get:
+      operationId: getWorkflowStepResultById
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workflowStepId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/html: {}
+  '/{token}/mx/workflow/{workflowId}/log':
+    get:
+      operationId: getLogByWorkflowById
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workflowId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/workflow/step/{workflowStepIds}/list':
+    get:
+      operationId: getWorkflowStepByIds
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workflowStepIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/workflow/step/{workflowStepId}/image':
+    get:
+      operationId: getWorkflowStepImageById
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workflowStepId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/mx/xrfscan/session/{sessionId}/list':
+    get:
+      operationId: getEnergyScanBySessionId_1
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/xrfscan/xrfscanId/{xrfscanId}/image/{imageType}/get':
+    get:
+      operationId: getImage
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: xrfscanId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: imageType
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/mx/xrfscan/xrfscanId/{xrfscanId}/csv':
+    get:
+      operationId: getCSVFile_1
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: xrfscanId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/xrfscan/xrfscanId/{xrfscanId}/file/list':
+    get:
+      operationId: getFiles
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: xrfscanId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/mx/xrfscan/xrfscanId/{xrfscanId}/file/{imageType}/get':
+    get:
+      operationId: getFile
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: xrfscanId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: imageType
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/container/{containerIds}/beamline/{beamlines}/samplechangerlocation/update':
+    post:
+      operationId: updateSampleLocation
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: containerIds
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: beamlines
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                sampleChangerLocation:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/container/{containerIds}/samplechangerlocation/empty':
+    post:
+      operationId: emptySampleLocation
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: containerIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/dewar/{dewarId}/label':
+    get:
+      operationId: labelDewar
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: dewarId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/dewar/{dewarId}/remove':
+    get:
+      operationId: removeDewar
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: dewarId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/dewar/status/{status}/list':
+    get:
+      operationId: getDewarsByStatus
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: status
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/dewar/session/{sessionId}/list':
+    get:
+      operationId: getDewarsBySession
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/dewar/save':
+    post:
+      operationId: saveDewar
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                sessionId:
+                  type: integer
+                  format: int32
+                dewarId:
+                  type: integer
+                  format: int32
+                code:
+                  type: string
+                comments:
+                  type: string
+                storageLocation:
+                  type: string
+                dewarStatus:
+                  type: string
+                blTimeStamp:
+                  type: string
+                isStorageDewar:
+                  type: string
+                barCode:
+                  type: string
+                customValue:
+                  type: string
+                transportValue:
+                  type: string
+                isReimbursed:
+                  type: boolean
+                trackingNumberFromSynchrotron:
+                  type: string
+                trackingNumberToSynchrotron:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/dewar/list':
+    get:
+      operationId: getDewars
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/dewar/list':
+    get:
+      operationId: getContainers
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/dewar/{dewarId}/labels':
+    get:
+      operationId: getLabels
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: dewarId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/pdf: {}
+  '/{token}/proposal/session/{sessionId}/list':
+    get:
+      operationId: getProposalsBySessionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/update':
+    get:
+      operationId: updateProposal
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/list':
+    get:
+      operationId: getProposals
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/technique/{technique}/get':
+    get:
+      operationId: listProposal
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: technique
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/info/get':
+    get:
+      operationId: getProposaInfos
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/mx/session/{sessionId}/comments/save':
+    post:
+      operationId: saveSessionComments
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                comments:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/session/list':
+    get:
+      operationId: getSessionByProposalId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/session/sessionId/{sessionId}/list':
+    get:
+      operationId: getSessionById
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/session/date/{startdate}/{enddate}/list':
+    get:
+      operationId: getSessionByDate
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: startdate
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: enddate
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/session/date/{startdate}/{enddate}/list':
+    get:
+      operationId: getSessionsByDate
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: startdate
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: enddate
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/session/beamlineoperator/{beamlineOperator}/list':
+    get:
+      operationId: getSessionsByBeamlineOperator
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: beamlineOperator
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/get':
+    get:
+      operationId: getShipping
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/labcontact/smis/list':
+    get:
+      operationId: getSMISLabContact
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/labcontact/list':
+    get:
+      operationId: getLabContact
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/labcontact/{labcontactId}/get':
+    get:
+      operationId: getLabContactByPk
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: labcontactId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/labcontact/save':
+    post:
+      operationId: saveLabContact
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                labcontact:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/list':
+    get:
+      operationId: listShipping
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/dewar/{dewarId}/puck/add':
+    get:
+      operationId: addPuck
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: dewarId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/dewar/{dewarId}/containerType/{containerType}/capacity/{capacity}/container/add':
+    get:
+      operationId: addContainer
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: dewarId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: containerType
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: capacity
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/dewar/{dewarId}/puck/{containerId}/get':
+    get:
+      operationId: getPuckById
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: dewarId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: containerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/history':
+    get:
+      operationId: getShipmentHistory
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/dewar/{dewarId}/puck/{containerId}/save':
+    post:
+      operationId: savePuck
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: dewarId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: containerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                puck:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/dewars/add':
+    post:
+      operationId: addDewarToShipment
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                dewars:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/dewar/{dewarId}/puck/{containerId}/remove':
+    get:
+      operationId: removePuck
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: dewarId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: containerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/remove':
+    get:
+      operationId: removeShipment
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/save':
+    post:
+      operationId: saveShipping
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                shippingId:
+                  type: string
+                name:
+                  type: string
+                comments:
+                  type: string
+                billingReference:
+                  type: string
+                courierAccount:
+                  type: string
+                dewarAvgCustomsValue:
+                  type: string
+                dewarAvgTransportValue:
+                  type: string
+                returnCourier:
+                  type: string
+                sendingLabContactId:
+                  type: integer
+                  format: int32
+                returnLabContactId:
+                  type: integer
+                  format: int32
+                sessionId:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/shipping/{shippingId}/status/{status}/update':
+    get:
+      operationId: setShippingStatus
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shippingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: status
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/userportal/ingest':
+    post:
+      operationId: updateProposalFromJSON
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                proposers:
+                  type: string
+                samples:
+                  type: string
+                sessions:
+                  type: string
+                labcontacts:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/userportal/updatebydates':
+    post:
+      operationId: updateProposalByDates
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/buffer/{buffer}/additive/save':
+    post:
+      operationId: saveBuffer
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: buffer
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                additive:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/buffer/{buffer}/additive/list':
+    get:
+      operationId: getAdditives
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: buffer
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/buffer/save':
+    post:
+      operationId: saveBuffer_1
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                buffer:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/buffer/list':
+    get:
+      operationId: getBuffers
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/datacollection/{key}/{value}/list':
+    get:
+      operationId: listByKey
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: value
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/datacollection/dataCollectionId/{datacollectionIdList}/bean':
+    get:
+      operationId: getDataCollections
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: datacollectionIdList
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/datacollection/experiment/{experimentId}/list':
+    get:
+      operationId: getDataCollectionByExperimentId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: experimentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/datacollection/session/{sessionId}/list':
+    get:
+      operationId: getDataCollectionBySessionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/datacollection/macromolecule/{macromoleculeId}/list':
+    get:
+      operationId: getDataCollectionByMacromoleculeId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: macromoleculeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/datacollection/{datacollectionId}/list':
+    get:
+      operationId: getDataCollectionByDataCollectionId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: datacollectionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/datacollection/list':
+    get:
+      operationId: list
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposalId}/saxs/experiment/{experimentId}/download':
+    get:
+      operationId: downloadExperiment
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposalId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: experimentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/x-octet-stream: {}
+  '/{token}/proposal/{proposalId}/saxs/experiment/{experimentId}/samplechanger/type/{type}/template':
+    get:
+      operationId: getTemplateSourceFile
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposalId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: experimentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/experiment/{experimentId}/save':
+    post:
+      operationId: saveExperiment
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: experimentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                comments:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/experiment/save':
+    post:
+      operationId: createExperiment
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                comments:
+                  type: string
+                experimentId:
+                  type: integer
+                  format: int32
+                measurements:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposalId}/saxs/experiment/{experimentId}/get':
+    get:
+      operationId: getExperimentById
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposalId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: experimentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/experiment/session/{sessionId}/list':
+    get:
+      operationId: list_1
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposalId}/saxs/experiment/list':
+    get:
+      operationId: list_2
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposalId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/experiment/{key}/{value}/list':
+    get:
+      operationId: list_3
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: value
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/frame/measurement/{measurementIdList}/list':
+    get:
+      operationId: listByMeasurement
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: measurementIdList
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/frame/datplot':
+    get:
+      operationId: datplot
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: frame
+          in: query
+          schema:
+            type: string
+        - name: average
+          in: query
+          schema:
+            type: string
+        - name: subtracted
+          in: query
+          schema:
+            type: string
+        - name: models
+          in: query
+          schema:
+            type: string
+        - name: sampleaverage
+          in: query
+          schema:
+            type: string
+        - name: bufferaverage
+          in: query
+          schema:
+            type: string
+        - name: operation
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/saxs/{proposal}/frame/subtractionId/{subtracted}/datplotmerge':
+    get:
+      operationId: datplotmerge
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtracted
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: from
+          in: query
+          schema:
+            type: string
+        - name: to
+          in: query
+          schema:
+            type: string
+        - name: scale
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/frame/average/{mergeIds}/bean':
+    get:
+      operationId: getListByAveragedId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: mergeIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/saxs/{proposal}/frame/{frameId}/download':
+    get:
+      operationId: downloadFrame
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: frameId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/frame/subtraction/{subtractionIdList}/list':
+    get:
+      operationId: get
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionIdList
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/frame/{mergeIds}/zip':
+    get:
+      operationId: zip
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: mergeIds
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/x-octet-stream: {}
+  '/{token}/proposal/{proposal}/saxs/frame/average/{mergeIdList}/list':
+    get:
+      operationId: list_4
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: mergeIdList
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/saxs/{proposal}/frame/subtractionId/{subtracted}/merge':
+    get:
+      operationId: merge
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtracted
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: from
+          in: query
+          schema:
+            type: string
+        - name: to
+          in: query
+          schema:
+            type: string
+        - name: scale
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposalId}/saxs/experiment/{experimentId}/hplc/overview':
+    get:
+      operationId: overview
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposalId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: experimentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/experiment/{experimentId}/hplc/frame/{start}/{end}/zip':
+    get:
+      operationId: getZipH5Frames
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: experimentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: start
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: end
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/x-octet-stream: {}
+  '/{token}/proposal/{proposal}/saxs/experiment/{experimentId}/hplc/download':
+    get:
+      operationId: downloadHDF5
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: experimentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/x-octet-stream: {}
+  '/{token}/proposal/{proposalId}/saxs/experiment/{experimentId}/hplc/frame/{frameId}/get':
+    get:
+      operationId: getFrame
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposalId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: experimentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: frameId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: operation
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/macromolecule/save':
+    post:
+      operationId: saveMacromolecule
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                macromolecule:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/macromolecule/{macromoleculeId}/contactfile/remove':
+    get:
+      operationId: removeContactDescriptionFile
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: macromoleculeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/macromolecule/{macromoleculeId}/pdb/upload':
+    post:
+      operationId: uploadPDBFile
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: macromoleculeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FileUploadForm'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/macromolecule/list':
+    get:
+      operationId: getMacromoleculeList
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/macromolecule/{macromoleculeId}/contactfile/upload':
+    post:
+      operationId: uploadContactDescriptionFile
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: macromoleculeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FileUploadForm'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/macromolecule/{macromoleculeId}/pdb/{structureId}/save':
+    post:
+      operationId: saveStructure_1
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: macromoleculeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: structureId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                symmetry:
+                  type: string
+                multiplicity:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*': {}
+  '/{token}/proposal/{proposal}/saxs/macromolecule/{macromoleculeId}/pdb/{structureId}/remove':
+    get:
+      operationId: removeStructure_1
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: macromoleculeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: structureId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*': {}
+  '/{token}/proposal/{proposalId}/saxs/measurement/experiment/{experimentId}/type/{type}/sort':
+    get:
+      operationId: sortMeasurements
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposalId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: experimentId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/measurement/{measurementId}/remove':
+    get:
+      operationId: removeMeasurement
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: measurementId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*': {}
+  '/{token}/proposal/{proposal}/saxs/measurement/save':
+    post:
+      operationId: saveMeasurement
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                measurement:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/modellist/{modelListId}/nsd':
+    get:
+      operationId: getNSDFile
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: modelListId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/modellist/{modelListId}/chi2rg':
+    get:
+      operationId: getChi2rg
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: modelListId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/model/{modelId}/pdb':
+    get:
+      operationId: getPDBByModelId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: modelId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/model/{modelId}/fir':
+    get:
+      operationId: getFirByModelId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: modelId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/model/{modelId}/fir/content':
+    get:
+      operationId: getFirContentByModelId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: modelId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/model/{modelId}/fit':
+    get:
+      operationId: getFitByModelId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: modelId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/model/{modelId}/fit/content':
+    get:
+      operationId: getFitContentByModelId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: modelId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/model/{modelId}/log':
+    get:
+      operationId: getLogByModelId
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: modelId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/modeling/pdb/get':
+    post:
+      operationId: getPDBModels
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                models:
+                  type: string
+                superpositions:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/stats/experiment/{year}/count':
+    get:
+      operationId: getStats_1
+      parameters:
+        - name: year
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/stats/experiment/{start}/{end}/count':
+    get:
+      operationId: getStatsByDates_1
+      parameters:
+        - name: start
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: end
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/stats/experiment/{year}/csv':
+    get:
+      operationId: getStatsCSV_1
+      parameters:
+        - name: year
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain:
+              schema:
+                type: string
+  '/{token}/proposal/{proposal}/saxs/specimen/save':
+    post:
+      operationId: saveSpecimen
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                specimen:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/specimen/merge':
+    post:
+      operationId: mergeSpecimens
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                experimentId:
+                  type: string
+                sourceSpecimenId:
+                  type: integer
+                  format: int32
+                targetSpecimenId:
+                  type: integer
+                  format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposalId}/saxs/stocksolution/list':
+    get:
+      operationId: getStockSolutions
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposalId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposalId}/saxs/stocksolution/save':
+    post:
+      operationId: saveStockSolution
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposalId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                stocksolution:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/bufferaverage/download':
+    get:
+      operationId: downloadBufferAverage
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/image/scattering':
+    get:
+      operationId: getScattering
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/image/kratky':
+    get:
+      operationId: getKratky
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/image/density':
+    get:
+      operationId: getDensity
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/image/guinier':
+    get:
+      operationId: getGuinier
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            image/png: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/download':
+    get:
+      operationId: downloadSubtraction
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionId}/sampleaverage/download':
+    get:
+      operationId: downloadSampleAverage
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        default:
+          description: default response
+          content:
+            text/plain: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionIdList}/zip':
+    get:
+      operationId: zip_1
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionIdList
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/x-octet-stream: {}
+  '/{token}/proposal/{proposal}/saxs/subtraction/{subtractionIdList}/list':
+    get:
+      operationId: list_5
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: proposal
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subtractionIdList
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /schema/status:
+    get:
+      operationId: getScriptsDone
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /authenticate:
+    post:
+      operationId: authenticate
+      parameters:
+        - name: site
+          in: query
+          schema:
+            type: string
+      requestBody:
+        content:
+          'application/x-www-form-urlencoded':
+            schema:
+              type: object
+              properties:
+                login:
+                  type: string
+                password:
+                  type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/proposals/{id}':
+    get:
+      summary: Retrieve the information of a proposal
+      description: >-
+        Obtain the information relating to a specific proposal (based on the
+        input ID) if it is available to the user currently logged in.
+      operationId: retrieveProposalById
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the proposal to retrieve
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The proposalwas found OK
+        '404':
+          description: A proposal could not be found for the input ID
+        default:
+          description: The proposal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProposalResponseDTO'
+components:
+  schemas:
+    FileUploadForm:
+      type: object
+      properties:
+        inputStream:
+          type: object
+        description:
+          type: string
+        fileName:
+          type: string
+        groupName:
+          type: string
+        type:
+          type: string
+    ProposalResponseDTO:
+      type: object
+      properties:
+        proposalId:
+          type: integer
+          format: int32
+        proposalCode:
+          type: string
+        title:
+          type: string
+        proposalNumber:
+          type: string
+        proposalType:
+          type: string
+        rowNumber:
+          type: integer
+          format: int32
