@@ -1,0 +1,213 @@
+openapi: 3.0.1
+info:
+  title: SynchWeb OpenAPI Specification
+  version: v1.0.0
+servers:
+  - url: 'https://localhost/api'
+paths:
+  /shipment/shipments/{shipmentId}:
+    get:
+      summary: Get Shipment
+      tags:
+        - shipment
+      description: Get Shipment from proposal
+      operationId: getShipment
+      responses:
+        default:
+          description: Return list of proposals for the logged in user
+      parameters:
+        - name: shipmentId
+          schema:
+            type: string
+          required: true
+          in: path
+        - $ref: '#/components/parameters/prop'
+
+  /shipment/shipments:
+    get:
+      summary: Get Shipments
+      tags:
+        - shipment
+      description: Get Shipment list for proposal
+      operationId: getShipments
+      responses:
+        default:
+          description: Return list of shipments for the proposal
+      parameters:
+        - name: id
+          schema:
+            type: string
+          required: false
+          in: query
+        - $ref: '#/components/parameters/prop'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+    post:
+      summary: Get Shipments
+      tags:
+        - shipment
+      description: Add Shipment to proposal
+      operationId: addShipments
+      responses:
+        default:
+          description: Return list of shipments for the proposal
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                SHIPPINGNAME:
+                  type: string
+                DEWARS:
+                  type: string
+                FCODES: 
+                  type: array
+                  items:
+                    type: string
+                FIRSTEXPERIMENTID: 
+                  type: string
+                noexp: 
+                  type: string
+                SAFETYLEVEL: 
+                  type: string
+                COMMENT: 
+                  type: string
+                SENDINGLABCONTACTID:
+                  type: string
+                RETURNLABCONTACTID: 
+                  type: string
+                DELIVERYAGENT_SHIPPINGDATE:
+                  type: string
+                PHYSICALLOCATION:
+                  type: string
+                READYBYTIME:
+                  type: string
+                CLOSETIME: 
+                  type: string
+                DELIVERYAGENT_DELIVERYDATE: 
+                  type: string
+                DELIVERYAGENT_AGENTNAME: 
+                  type: string
+                DELIVERYAGENT_AGENTCODE: 
+                  type: string
+                prop: 
+                  type: string
+
+  /shipment/dewars/sid/{shipmentId}:
+    get:
+      summary: Get Shipments
+      tags:
+        - shipment
+      description: Get Dewar list for shipment
+      operationId: getDewarsInShipment
+      responses:
+        default:
+          description: Return list of dewars for the dewar
+      parameters:
+        - name: shipmentId
+          schema:
+            type: string
+          required: true
+          in: path
+        - $ref: '#/components/parameters/prop'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+
+  /shipment/containers/did/{dewarId}:
+    get:
+      summary: Get Containers in Dewar
+      tags:
+        - shipment
+      description: Get Container list for dewar within shipment
+      operationId: getContainersInDewar
+      responses:
+        default:
+          description: Return list of containers for the dewar
+      parameters:
+        - name: dewarId
+          schema:
+            type: string
+          required: true
+          in: path
+        - $ref: '#/components/parameters/prop'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+
+  /shipment/containers:
+    post:
+      summary: Add Container to Dewar
+      tags:
+        - shipment
+      description: Add Container to dewar within shipment
+      operationId: addContainerToDewar
+      responses:
+        default:
+          description: Return container id
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                DEWARID: 
+                    type: string
+                new: 
+                    type: string
+                BARCODECHECK: 
+                    type: string
+                CAPACITY:
+                    type: string
+                CONTAINERTYPE: 
+                    type: string
+                NAME: 
+                    type: string
+                CONTAINERREGISTRYID:
+                    type: string
+                AUTOMATED: 
+                    type: string
+                BARCODE: 
+                    type: string
+                PERSONID: 
+                    type: string
+                EXPERIMENTTYPE:
+                    type: string
+                STORAGETEMPERATURE: 
+                    type: string
+                COMMENTS: 
+                    type: string
+                REQUESTEDIMAGERID: 
+                    type: string
+                SCHEDULEID: 
+                    type: string
+                SCREENID: 
+                    type: string
+                prop: 
+                    type: string
+  
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+  parameters:
+    page:
+      name: page
+      required: false
+      in: query
+      schema:
+        type: integer
+    per_page:
+      name: per_page
+      schema:
+        type: integer
+      required: false
+      in: query
+    prop:
+      name: prop
+      schema:
+        type: string
+      required: false
+      in: query
+
