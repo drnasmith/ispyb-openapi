@@ -52,22 +52,9 @@ paths:
         required: false
         in: query
         description: Visit number to return
-      - name: prop
-        schema:
-          type: string
-        required: false
-        in: query
-        description: Proposal code to retrieve visits from
-      - name: page
-        schema:
-          type: string
-        required: false
-        in: query
-      - name: per_page
-        schema:
-          type: string
-        required: false
-        in: query
+      - $ref: '#/components/parameters/prop'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/per_page'
       - name: current
         schema:
           type: string
@@ -166,12 +153,7 @@ paths:
         required: false
         in: query
         description: Visit number to update
-      - name: prop
-        schema:
-          type: string
-        required: false
-        in: query
-        description: Proposal code to retrieve visits from        
+      - $ref: '#/components/parameters/prop'
       - name: COMMENTS
         schema:
           type: string
@@ -207,13 +189,7 @@ paths:
         default:
           description: Proposal codes (cm, mx, em, cy, in etc.)
       parameters:
-      - name: prop
-        schema:
-          type: string
-        required: false
-        in: query
-        description: Proposal code to retrieve visits from        
-
+      - $ref: '#/components/parameters/prop'
   /lookup:
     post:
       summary: Lookup visit by dewarid, containerid, sampleid etc.
@@ -271,3 +247,25 @@ components:
     BearerAuth:
       type: http
       scheme: bearer
+
+  parameters:
+    page:
+      name: page
+      required: false
+      in: query
+      schema:
+        type: integer
+    per_page:
+      name: per_page
+      schema:
+        type: integer
+      required: false
+      in: query
+    prop:
+      name: prop
+      schema:
+        type: string
+      required: false
+      in: query
+      description: Proposal Code (e.g. cm1234)
+
