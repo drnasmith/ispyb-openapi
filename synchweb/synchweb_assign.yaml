@@ -1,0 +1,139 @@
+openapi: 3.0.1
+info:
+  title: SynchWeb OpenAPI Specification
+  version: v0.0.0
+  description: Documentation for SynchWeb REST API
+servers:
+  - url: 'https://localhost:8080/api'
+
+paths:
+  /assign/assign:
+    get:
+      summary: Assign a container to the given position in a sample changer
+      tags:
+        - assign
+      operationId: getAssignAssign
+      description: >
+        Find the parent dewar for this container id, assign container's "sample changer location" to supplied position and update the dewar 'state' to processing
+      responses:
+        default:
+          description: Returns 1 if the assignment worked or 0 if container not found
+        200:
+          description: Assignment worked
+      parameters:
+        - name: visit
+          schema:
+            type: string
+          required: true
+          in: query
+        - name: cid
+          schema:
+            type: string
+          required: true
+          in: query
+        - name: pos
+          schema:
+            type: string
+          required: true
+          in: query
+  /assign/unassign:
+    get:
+      summary: Unassign a container from its position in sample changer
+      description: >
+        Set container's "sample changer location" to ''
+      tags:
+        - assign
+      operationId: getAssignUnassign
+      responses:
+        default:
+          description: Return 1 if container updated, 0 if not
+      parameters:
+        - name: visit
+          schema:
+            type: string
+          required: true
+          in: query
+        - name: cid
+          schema:
+            type: string
+          required: true
+          in: query
+  /assign/deact:
+    get:
+      summary: Unassign all containers that were in a dewar
+      description: >
+        Find dewar and set the "sample changer location" for all containers to ''
+      tags:
+        - assign
+      operationId: getAssignDeactivate
+      responses:
+        default:
+          description: Return 1 if containers updated, 0 if not
+      parameters:
+        - name: visit
+          schema:
+            type: string
+          required: false
+          in: query
+        - name: prop
+          schema:
+            type: string
+          required: false
+          in: query
+        - name: did
+          schema:
+            type: string
+          required: true
+          in: query
+          description: Dewar Id
+
+  /assign/visits:
+    get:
+      summary: Get current visits for this beamline (derived from calling ip address)
+      tags:
+        - assign
+      operationId: getAssignVisits
+      responses:
+        200:
+          description: List of visit for this beamline
+
+  /assign/visits/{visit}:
+    get:
+      summary: Get visit information for this beamline (derived from calling ip address)
+      tags:
+        - assign
+      operationId: getAssignVisit
+      responses:
+        200:
+          description: List of visit for this beamline
+        400:
+          description: Visit not found
+      parameters:
+        - name: visit
+          schema:
+            type: string
+          required: true
+          in: path
+
+  /assign/names:
+    get:
+      summary: Puck names as retrieved by puck scanner (and matched in ISPyB)
+      tags:
+        - assign
+      operationId: getAssignNames
+      responses:
+        200:
+          description: List of visit for this beamline
+      parameters:
+        - name: prop
+          schema:
+            type: string
+          required: true
+          in: query
+        - name: bl
+          schema:
+            type: string
+          required: true
+          in: query
+          description: beamline code
+          example: i01
