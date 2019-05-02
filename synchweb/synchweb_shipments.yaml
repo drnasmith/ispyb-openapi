@@ -5,6 +5,17 @@ info:
 servers:
   - url: 'https://localhost/api'
 paths:
+  /shipment/countries:
+    get:
+      summary: Get Countries List
+      tags:
+        - shipment
+      description: GetList of countries for use in populating drop down list
+      operationId: getShipmentCountries
+      responses:
+        default:
+          description: Return list of contries
+
   /shipment/shipments/{shipmentId}:
     get:
       summary: Get Shipment
@@ -22,7 +33,25 @@ paths:
           required: true
           in: path
         - $ref: '#/components/parameters/prop'
-
+    patch:
+      summary: Update Shipment
+      tags:
+        - shipment
+      description: Update Shipment in proposal
+      operationId: updateShipment
+      responses:
+        default:
+          description: Return list of proposals for the logged in user
+      parameters:
+        - name: shipmentId
+          schema:
+            type: string
+          required: true
+          in: path
+        - $ref: '#/components/parameters/prop'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateShipment'
+              
   /shipment/shipments:
     get:
       summary: Get Shipments
@@ -52,47 +81,7 @@ paths:
         default:
           description: Return list of shipments for the proposal
       requestBody:
-        content:
-          '*/*':
-            schema:
-              type: object
-              properties:
-                SHIPPINGNAME:
-                  type: string
-                DEWARS:
-                  type: string
-                FCODES: 
-                  type: array
-                  items:
-                    type: string
-                FIRSTEXPERIMENTID: 
-                  type: string
-                noexp: 
-                  type: string
-                SAFETYLEVEL: 
-                  type: string
-                COMMENT: 
-                  type: string
-                SENDINGLABCONTACTID:
-                  type: string
-                RETURNLABCONTACTID: 
-                  type: string
-                DELIVERYAGENT_SHIPPINGDATE:
-                  type: string
-                PHYSICALLOCATION:
-                  type: string
-                READYBYTIME:
-                  type: string
-                CLOSETIME: 
-                  type: string
-                DELIVERYAGENT_DELIVERYDATE: 
-                  type: string
-                DELIVERYAGENT_AGENTNAME: 
-                  type: string
-                DELIVERYAGENT_AGENTCODE: 
-                  type: string
-                prop: 
-                  type: string
+        $ref: '#/components/requestBodies/NewShipment'
 
   /shipment/dewars/sid/{shipmentId}:
     get:
@@ -211,3 +200,65 @@ components:
       required: false
       in: query
 
+  requestBodies:
+    NewShipment:
+      description: Request to create new Shipment
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NewShipment'
+    UpdateShipment:
+      description: Request to update Shipment
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseShipment'
+  schemas:
+    BaseShipment:
+      properties:
+        SHIPPINGNAME:
+          type: string
+        SAFETYLEVEL: 
+          type: string
+        COMMENTS: 
+          type: string
+        SENDINGLABCONTACTID:
+          type: string
+        RETURNLABCONTACTID: 
+          type: string
+        PHYSICALLOCATION:
+          type: string
+        READYBYTIME:
+          type: string
+        CLOSETIME: 
+          type: string
+        DELIVERYAGENT_SHIPPINGDATE:
+          type: string
+        DELIVERYAGENT_DELIVERYDATE: 
+          type: string
+        DELIVERYAGENT_AGENTNAME: 
+          type: string
+        DELIVERYAGENT_AGENTCODE: 
+          type: string 
+    NewShipment:
+      allOf:
+        - $ref: '#/components/schemas/BaseShipment'
+        - type: object
+          properties:
+            DEWARS:
+              type: string
+            FCODES: 
+              type: array
+              items:
+                type: string
+            FIRSTEXPERIMENTID: 
+              type: string
+            noexp: 
+              type: string
+            SAFETYLEVEL: 
+              type: string
+            COMMENT: 
+              type: string
+    
