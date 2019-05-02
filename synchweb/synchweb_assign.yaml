@@ -5,7 +5,6 @@ info:
   description: Documentation for SynchWeb REST API
 servers:
   - url: 'https://localhost:8080/api'
-
 paths:
   /assign/assign:
     get:
@@ -14,12 +13,14 @@ paths:
         - assign
       operationId: getAssignAssign
       description: >
-        Find the parent dewar for this container id, assign container's "sample changer location" to supplied position and update the dewar 'state' to processing
+        Find the parent dewar for this container id, assign container's "sample
+        changer location" to supplied position and update the dewar 'state' to
+        processing
       responses:
+        '200':
+          description: Assignment worked
         default:
           description: Returns 1 if the assignment worked or 0 if container not found
-        200:
-          description: Assignment worked
       parameters:
         - name: visit
           schema:
@@ -28,25 +29,25 @@ paths:
           in: query
         - name: cid
           schema:
-            type: string
+            type: integer
           required: true
           in: query
         - name: pos
           schema:
-            type: string
+            type: integer
           required: true
           in: query
   /assign/unassign:
     get:
       summary: Unassign a container from its position in sample changer
-      description: >
+      description: |
         Set container's "sample changer location" to ''
       tags:
         - assign
       operationId: getAssignUnassign
       responses:
         default:
-          description: Return 1 if container updated, 0 if not
+          description: 'Return 1 if container updated, 0 if not'
       parameters:
         - name: visit
           schema:
@@ -55,20 +56,21 @@ paths:
           in: query
         - name: cid
           schema:
-            type: string
+            type: integer
           required: true
           in: query
   /assign/deact:
     get:
       summary: Unassign all containers that were in a dewar
       description: >
-        Find dewar and set the "sample changer location" for all containers to ''
+        Find dewar and set the "sample changer location" for all containers to
+        ''
       tags:
         - assign
       operationId: getAssignDeactivate
       responses:
         default:
-          description: Return 1 if containers updated, 0 if not
+          description: 'Return 1 if containers updated, 0 if not'
       parameters:
         - name: visit
           schema:
@@ -82,11 +84,10 @@ paths:
           in: query
         - name: did
           schema:
-            type: string
+            type: integer
           required: true
           in: query
           description: Dewar Id
-
   /assign/visits:
     get:
       summary: Get current visits for this beamline (derived from calling ip address)
@@ -94,19 +95,28 @@ paths:
         - assign
       operationId: getAssignVisits
       responses:
-        200:
-          description: List of visit for this beamline
-
-  /assign/visits/{visit}:
+        '200':
+          description: List of visits for this beamline
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Visits'
+  '/assign/visits/{visit}':
     get:
-      summary: Get visit information for this beamline (derived from calling ip address)
+      summary: >-
+        Get visit information for this beamline (derived from calling ip
+        address)
       tags:
         - assign
       operationId: getAssignVisit
       responses:
-        200:
-          description: List of visit for this beamline
-        400:
+        '200':
+          description: Visit info for this beamline
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Visit'
+        '400':
           description: Visit not found
       parameters:
         - name: visit
@@ -114,7 +124,6 @@ paths:
             type: string
           required: true
           in: path
-
   /assign/names:
     get:
       summary: Puck names as retrieved by puck scanner (and matched in ISPyB)
@@ -122,8 +131,15 @@ paths:
         - assign
       operationId: getAssignNames
       responses:
-        200:
-          description: List of visit for this beamline
+        '200':
+          description: List of puck/container barcodes for this beamline
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+
       parameters:
         - name: prop
           schema:
@@ -137,3 +153,26 @@ paths:
           in: query
           description: beamline code
           example: i01
+
+components:
+  schemas:
+    Visit:
+      type: object
+      properties:
+        visit:
+          type: string
+        st:
+          type: string
+        en:
+          type: string
+        bl:
+          type: string
+    Visits:
+      type: object
+      properties:
+        total:
+          type: number
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Visit'
