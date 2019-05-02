@@ -1,0 +1,43 @@
+openapi: 3.0.1
+info:
+  title: SynchWeb OpenAPI Specification
+  version: v0.0.0
+  description: Documentation for SynchWeb REST API
+servers:
+  - url: 'https://localhost:8080/api'
+security:
+  - BearerAuth: []
+paths:
+  /feedback:
+    post:
+      summary: Submit feedback about SynchWeb
+      tags:
+        - feedback
+      operationId: postFeedback
+      responses:
+        '200':
+          description: Submit feedback
+      parameters:
+        - name: name
+          schema:
+            type: string
+          required: true
+          in: query
+        - name: email
+          schema:
+            type: string
+            format: email
+          required: true
+          in: query
+        - name: feedback
+          schema:
+            type: string
+          required: true
+          in: path
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      

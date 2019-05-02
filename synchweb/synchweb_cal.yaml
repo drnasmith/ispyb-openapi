@@ -1,0 +1,63 @@
+openapi: 3.0.1
+info:
+  title: SynchWeb OpenAPI Specification
+  version: v0.0.0
+  description: Documentation for SynchWeb REST API
+servers:
+  - url: 'https://localhost:8080/api'
+  - url: 'https://cs04r-sc-vserv-163.diamond.ac.uk/api'
+security:
+  - BearerAuth: []
+paths:
+  /cal/ics/h/{h}/calendar.ics:
+    get:
+      summary: Get the calender for a specific proposal
+      tags:
+        - assign
+      operationId: getCalender
+      responses:
+        '200':
+          description: Return calender (utf-8 charset)
+          content:
+            text/calendar:
+              schema:
+                $ref: '#/components/schemas/Calendar'
+      parameters:
+        - name: h
+          schema:
+            type: string
+          required: true
+          in: path
+          description: Hashed version of proposal (can be retrieved from /cal/ext route)
+
+  /cal/ext:
+    get:
+      summary: Get External (relative) URL for calendar
+      tags:
+        - assign
+      operationId: getCalenderURL
+      responses:
+        '200':
+          description: Returns URL for external calendar (of form /cal/ics/h/<hash>/calendar.ics)
+      parameters:
+        - name: prop
+          schema:
+            type: string
+          required: false
+          in: query
+          description: Proposal code and number
+        - name: bl
+          schema:
+            type: string
+          required: false
+          in: query
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      
+  schemas:
+    Calendar:
+      type: string
