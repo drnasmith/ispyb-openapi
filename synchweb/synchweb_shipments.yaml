@@ -134,46 +134,40 @@ paths:
         default:
           description: Return container id
       requestBody:
-        content:
-          '*/*':
-            schema:
-              type: object
-              properties:
-                DEWARID: 
-                    type: string
-                new: 
-                    type: string
-                BARCODECHECK: 
-                    type: string
-                CAPACITY:
-                    type: string
-                CONTAINERTYPE: 
-                    type: string
-                NAME: 
-                    type: string
-                CONTAINERREGISTRYID:
-                    type: string
-                AUTOMATED: 
-                    type: string
-                BARCODE: 
-                    type: string
-                PERSONID: 
-                    type: string
-                EXPERIMENTTYPE:
-                    type: string
-                STORAGETEMPERATURE: 
-                    type: string
-                COMMENTS: 
-                    type: string
-                REQUESTEDIMAGERID: 
-                    type: string
-                SCHEDULEID: 
-                    type: string
-                SCREENID: 
-                    type: string
-                prop: 
-                    type: string
-  
+        $ref: '#/components/requestBodies/NewContainer'
+
+  /shipment/dewars:
+    post:
+      summary: Add Dewar to Shipment
+      tags:
+        - shipment
+      description: Add dewar to shipment
+      operationId: addDewarToShipment
+      responses:
+        default:
+          description: Return dewar id
+      requestBody:
+        $ref: '#/components/requestBodies/NewDewar'
+
+  /shipment/dewars/{dewarId}:
+    patch:
+      summary: Update Dewar information
+      tags:
+        - shipment
+      description: Add dewar to shipment
+      operationId: updateDewar
+      parameters:
+        - name: dewarId
+          schema:
+            type: string
+          required: true
+          in: path
+      responses:
+        default:
+          description: Return dewar info
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateDewar'
+
 components:
   securitySchemes:
     BearerAuth:
@@ -208,6 +202,23 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/NewShipment'
+
+    NewDewar:
+      description: Request to create new Dewar
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NewDewar'
+
+    UpdateDewar:
+      description: Request to update Dewar
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateDewar'
+
     UpdateShipment:
       description: Request to update Shipment
       required: true
@@ -215,6 +226,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/BaseShipment'
+
+    NewContainer:
+      description: A JSON request describing new container
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Container'
   schemas:
     BaseShipment:
       properties:
@@ -241,7 +260,7 @@ components:
         DELIVERYAGENT_AGENTNAME: 
           type: string
         DELIVERYAGENT_AGENTCODE: 
-          type: string 
+          type: string
     NewShipment:
       allOf:
         - $ref: '#/components/schemas/BaseShipment'
@@ -261,4 +280,80 @@ components:
               type: string
             COMMENT: 
               type: string
-    
+    Container:
+      properties:
+        DEWARID:
+            type: string
+        CONTAINERTYPE:
+            type: string
+        NAME:
+            type: string
+        new:
+            type: string
+        BARCODECHECK:
+            type: string
+        CAPACITY:
+            type: string
+        CONTAINERREGISTRYID:
+            type: string
+        AUTOMATED:
+            type: string
+        BARCODE:
+            type: string
+        PERSONID:
+            type: string
+        EXPERIMENTTYPE:
+            type: string
+        STORAGETEMPERATURE:
+            type: string
+        COMMENTS:
+            type: string
+        REQUESTEDIMAGERID:
+            type: string
+        SCHEDULEID:
+            type: string
+        SCREENID:
+            type: string
+        prop:
+            type: string
+      required:
+        - DEWARID
+        - CONTAINERTYPE
+        - NAME
+
+    BaseDewar:
+      properties:
+        CODE:
+          type: string
+        prop:
+          type: string
+        FACILITYCODE:
+          type: string
+          pattern: '^DLS\-(MX|IN|CY)\-\d{4}$'
+        TRACKINGNUMBERTOSYNCHROTRON:
+          type: string
+        TRACKINGNUMBERFROMSYNCHROTRON:
+          type: string
+        WEIGHT:
+          type: integer
+        FIRSTEXPERIMENTID:
+          type: integer
+
+    NewDewar:
+      allOf:
+        - $ref: '#/components/schemas/BaseDewar'
+        - type: object
+          properties:
+            SHIPPINGID:
+              type: integer
+      required:
+        - CODE
+        - SHIPPINGID
+        - prop
+
+    UpdateDewar:
+      allOf:
+        - $ref: '#/components/schemas/BaseDewar'
+      required:
+        - CODE
+        - prop
