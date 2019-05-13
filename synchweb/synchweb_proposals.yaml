@@ -242,6 +242,66 @@ paths:
         required: false
         in: query
 
+
+  /proposal/auto:
+    get:
+      summary: Create a session for this container
+      tags:
+        - proposal
+      description: Calls UAS API to create a session. Only works for configured beamlines.
+      operationId: getCreateAutocollectSession
+      responses:
+        200:
+          description: Session created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoSessionCreated'
+        400:
+          description: Session creation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Return created session code (e.g. mx0000-0)
+      parameters:
+      - name: bl
+        schema:
+          type: string
+        required: true
+        in: query
+      - name: CONTAINERID
+        schema:
+          type: string
+        required: true
+        in: query
+    delete:
+      summary: Close the session for this container
+      tags:
+        - proposal
+      description: Calls UAS API to close a session. Only works for configured beamlines.
+      operationId: deleteCreateAutocollectSession
+      responses:
+        200:
+          description: Session closed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoSessionClosed'
+        400:
+          description: Session closed error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: CONTAINERID
+        schema:
+          type: string
+        required: true
+        in: query
+
 components:
   securitySchemes:
     BearerAuth:
@@ -269,3 +329,28 @@ components:
       in: query
       description: Proposal Code (e.g. cm1234)
 
+  schemas:
+    AutoSessionCreated:
+      type: object
+      properties:
+        VISIT:
+          type: string
+          description: Stores a session code, proposal-visit_number
+
+    AutoSessionClosed:
+      type: object
+      properties:
+        VISIT:
+          type: string
+          description: Stores a session code, proposal-visit_number
+        MESSAGE:
+          type: string
+          description: State of session (closed | already closed)
+
+    ErrorReponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        msg:
+          type: string
