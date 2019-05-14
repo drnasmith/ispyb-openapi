@@ -5,18 +5,37 @@ info:
 servers:
   - url: 'https://localhost/api'
 paths:
-  /shipment/countries:
+  /shipment/shipments:
     get:
-      summary: Get Countries List
+      summary: Get Shipments for a proposal
       tags:
         - shipment
-      description: GetList of countries for use in populating drop down list
-      operationId: getShipmentCountries
+      description: Get Shipment list for proposal
+      operationId: getShipments
       responses:
         default:
-          description: Return list of contries
-
-  /shipment/shipments/{shipmentId}:
+          description: Return list of shipments for the proposal
+      parameters:
+        - name: id
+          schema:
+            type: string
+          required: false
+          in: query
+        - $ref: '#/components/parameters/prop'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+    post:
+      summary: Create a new shipment
+      tags:
+        - shipment
+      description: Add Shipment to proposal
+      operationId: createShipment
+      responses:
+        default:
+          description: Return new shipment id
+      requestBody:
+        $ref: '#/components/requestBodies/NewShipment'
+  '/shipment/shipments/{shipmentId}':
     get:
       summary: Get Shipment
       tags:
@@ -51,41 +70,39 @@ paths:
         - $ref: '#/components/parameters/prop'
       requestBody:
         $ref: '#/components/requestBodies/UpdateShipment'
-              
-  /shipment/shipments:
-    get:
-      summary: Get Shipments
+  /shipment/dewars:
+    post:
+      summary: Add Dewar to Shipment
       tags:
         - shipment
-      description: Get Shipment list for proposal
-      operationId: getShipments
+      description: Add dewar to shipment
+      operationId: addDewarToShipment
       responses:
         default:
-          description: Return list of shipments for the proposal
+          description: Return dewar id
+      requestBody:
+        $ref: '#/components/requestBodies/NewDewar'
+  '/shipment/dewars/{dewarId}':
+    patch:
+      summary: Update Dewar information
+      tags:
+        - shipment
+      description: Add dewar to shipment
+      operationId: updateDewar
       parameters:
-        - name: id
+        - name: dewarId
           schema:
             type: string
-          required: false
-          in: query
-        - $ref: '#/components/parameters/prop'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/per_page'
-    post:
-      summary: Get Shipments
-      tags:
-        - shipment
-      description: Add Shipment to proposal
-      operationId: addShipments
+          required: true
+          in: path
       responses:
         default:
-          description: Return list of shipments for the proposal
+          description: Return dewar info
       requestBody:
-        $ref: '#/components/requestBodies/NewShipment'
-
-  /shipment/dewars/sid/{shipmentId}:
+        $ref: '#/components/requestBodies/UpdateDewar'
+  '/shipment/dewars/sid/{shipmentId}':
     get:
-      summary: Get Shipments
+      summary: Get shipment information
       tags:
         - shipment
       description: Get Dewar list for shipment
@@ -102,8 +119,7 @@ paths:
         - $ref: '#/components/parameters/prop'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
-
-  /shipment/containers/did/{dewarId}:
+  '/shipment/containers/did/{dewarId}':
     get:
       summary: Get Containers in Dewar
       tags:
@@ -122,7 +138,6 @@ paths:
         - $ref: '#/components/parameters/prop'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
-
   /shipment/containers:
     post:
       summary: Add Container to Dewar
@@ -135,45 +150,21 @@ paths:
           description: Return container id
       requestBody:
         $ref: '#/components/requestBodies/NewContainer'
-
-  /shipment/dewars:
-    post:
-      summary: Add Dewar to Shipment
+  /shipment/countries:
+    get:
+      summary: Get Countries List
       tags:
         - shipment
-      description: Add dewar to shipment
-      operationId: addDewarToShipment
+      description: Return list of countries for use in populating drop down list
+      operationId: getShipmentCountries
       responses:
         default:
-          description: Return dewar id
-      requestBody:
-        $ref: '#/components/requestBodies/NewDewar'
-
-  /shipment/dewars/{dewarId}:
-    patch:
-      summary: Update Dewar information
-      tags:
-        - shipment
-      description: Add dewar to shipment
-      operationId: updateDewar
-      parameters:
-        - name: dewarId
-          schema:
-            type: string
-          required: true
-          in: path
-      responses:
-        default:
-          description: Return dewar info
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateDewar'
-
+          description: Return list of contries
 components:
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
-
   parameters:
     page:
       name: page
@@ -193,7 +184,6 @@ components:
         type: string
       required: false
       in: query
-
   requestBodies:
     NewShipment:
       description: Request to create new Shipment
@@ -202,7 +192,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/NewShipment'
-
     NewDewar:
       description: Request to create new Dewar
       required: true
@@ -210,7 +199,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/NewDewar'
-
     UpdateDewar:
       description: Request to update Dewar
       required: true
@@ -218,7 +206,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdateDewar'
-
     UpdateShipment:
       description: Request to update Shipment
       required: true
@@ -226,7 +213,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/BaseShipment'
-
     NewContainer:
       description: A JSON request describing new container
       required: true
@@ -239,27 +225,27 @@ components:
       properties:
         SHIPPINGNAME:
           type: string
-        SAFETYLEVEL: 
+        SAFETYLEVEL:
           type: string
-        COMMENTS: 
+        COMMENTS:
           type: string
         SENDINGLABCONTACTID:
           type: string
-        RETURNLABCONTACTID: 
+        RETURNLABCONTACTID:
           type: string
         PHYSICALLOCATION:
           type: string
         READYBYTIME:
           type: string
-        CLOSETIME: 
+        CLOSETIME:
           type: string
         DELIVERYAGENT_SHIPPINGDATE:
           type: string
-        DELIVERYAGENT_DELIVERYDATE: 
+        DELIVERYAGENT_DELIVERYDATE:
           type: string
-        DELIVERYAGENT_AGENTNAME: 
+        DELIVERYAGENT_AGENTNAME:
           type: string
-        DELIVERYAGENT_AGENTCODE: 
+        DELIVERYAGENT_AGENTCODE:
           type: string
     NewShipment:
       allOf:
@@ -268,59 +254,58 @@ components:
           properties:
             DEWARS:
               type: string
-            FCODES: 
+            FCODES:
               type: array
               items:
                 type: string
-            FIRSTEXPERIMENTID: 
+            FIRSTEXPERIMENTID:
               type: string
-            noexp: 
+            noexp:
               type: string
-            SAFETYLEVEL: 
+            SAFETYLEVEL:
               type: string
-            COMMENT: 
+            COMMENT:
               type: string
     Container:
       properties:
         DEWARID:
-            type: string
+          type: string
         CONTAINERTYPE:
-            type: string
+          type: string
         NAME:
-            type: string
+          type: string
         new:
-            type: string
+          type: string
         BARCODECHECK:
-            type: string
+          type: string
         CAPACITY:
-            type: string
+          type: string
         CONTAINERREGISTRYID:
-            type: string
+          type: string
         AUTOMATED:
-            type: string
+          type: string
         BARCODE:
-            type: string
+          type: string
         PERSONID:
-            type: string
+          type: string
         EXPERIMENTTYPE:
-            type: string
+          type: string
         STORAGETEMPERATURE:
-            type: string
+          type: string
         COMMENTS:
-            type: string
+          type: string
         REQUESTEDIMAGERID:
-            type: string
+          type: string
         SCHEDULEID:
-            type: string
+          type: string
         SCREENID:
-            type: string
+          type: string
         prop:
-            type: string
+          type: string
       required:
         - DEWARID
         - CONTAINERTYPE
         - NAME
-
     BaseDewar:
       properties:
         CODE:
@@ -338,7 +323,6 @@ components:
           type: integer
         FIRSTEXPERIMENTID:
           type: integer
-
     NewDewar:
       allOf:
         - $ref: '#/components/schemas/BaseDewar'
@@ -350,7 +334,6 @@ components:
         - CODE
         - SHIPPINGID
         - prop
-
     UpdateDewar:
       allOf:
         - $ref: '#/components/schemas/BaseDewar'
